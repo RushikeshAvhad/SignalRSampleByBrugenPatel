@@ -1,7 +1,7 @@
 ﻿
 //  Create Connection
 var connectionUserCount = new signalR.HubConnectionBuilder()
-    .withUrl("/hubs/userCount", signalR.HttpTransportType.LongPolling).build();
+    .withUrl("/hubs/userCount", signalR.HttpTransportType.WebSockets).build();
 
 //  Connect to methods that hub invokes aka receive notifications from hub
 connectionUserCount.on("updateTotalViews", (value) => {
