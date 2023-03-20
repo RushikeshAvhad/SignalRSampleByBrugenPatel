@@ -15,7 +15,7 @@ connectionUserCount.on("updateTotalUsers", (value) => {
 
 //  Invoke hub methods aka send notification to hub
 function newWindowLoadedOnClient() {
-    connectionUserCount.send("NewWindowLoaded");
+    connectionUserCount.invoke("NewWindowLoaded", "Rushikesh").then((value) => console.log(value));
 }
 
 //  Start Connection

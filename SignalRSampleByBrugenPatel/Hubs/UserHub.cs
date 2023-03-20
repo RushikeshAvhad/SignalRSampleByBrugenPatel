@@ -21,15 +21,11 @@ namespace SignalRSampleByBrugenPatel.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task NewWindowLoaded()
+        public async Task<string> NewWindowLoaded(string name)
         {
-            //  Whenever new tab opens call this method & increase totalViews
             TotalViews++;
-
-            //  Send update to all clients that total views have been updated
-            //  Clients is inside the Hub Implementation
-            //  updateTotalViews Method located on client side
             await Clients.All.SendAsync("updateTotalViews", TotalViews);
+            return $"total views from {name} -{TotalViews}";
         }
     }
 }
